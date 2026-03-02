@@ -1,24 +1,27 @@
 # TODO list
 
+# For frontend developer
+- смотри `deploy_for_frontend.md`
+
 # For backend developer
-uv init
-uv venv
-uv add fastapi
-uv add uvicorn[standard]
-uv add acyncpg
-uv add sqlalchemy
-uv add alembic
-uv add pydantic[email]    - for EmailStr
-uv add python-multipart   - for auth
+- uv init
+- uv venv
+- uv add fastapi[standard]
+- uv add uvicorn[standard]
+- uv add acyncpg
+- uv add sqlalchemy
+- uv add alembic
+- uv add pydantic[email]    - for EmailStr
+- uv add python-multipart   - for auth
 
 auth:
-uv add passlib  (устарела, сменить на свежую)
-uv add pyjwt   - for jwt
+- uv add passlib  (устарела, сменить на свежую)
+- uv add pyjwt   - for jwt
 
 ## Alembic
-uv add alembic
-alembic init -t async app/migrations
-app/migrations/env.py ->
+- uv add alembic
+- alembic init -t async app/migrations
+- app/migrations/env.py ->
 ```
 from app.database import Base
 from app import models
@@ -37,24 +40,19 @@ async def run_async_migrations() -> None:
         ...
     )
 ```
-ignore alembic.ini
-alembic revision --autogenerate  -m "Create user and todos tables"   - создание файла миграции
-alembic upgrade head - применены миграции к бд.
+- не трогаем alembic.ini
+- alembic revision --autogenerate  -m "Create user and todos tables"   - создание файла миграции
+- alembic upgrade head - применены миграции к бд.
 
 
 ## Сделано
 - в ./init_scripts лежат скрипты для создания базы данных при первом запуске из docker-compose.yml
 
 # Сделать
-Спрятать в .env данные подключения к postgres.
-Использовать в docker-compose и DATABASE_URL.
+- Спрятать в .env данные подключения к postgres. Использовать в docker-compose и DATABASE_URL.
 
 
 # Алгоритм работы
-Пользователь регистрируется
-Затем аутентифицируется
-Под своей УЗ может выполнять CRUD по задачам.
-
 Пользователь может:
 - Зарегистрироваться.
 - Аутентифицироваться. (токены нигде не сохраняются, ни на фронте, ни на бэке, только в swagger)
