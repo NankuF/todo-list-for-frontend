@@ -13,8 +13,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",      # React dev server
-        "http://localhost:5173",       # Vite dev server
-        "http://127.0.0.1:5173",
+        "http://localhost:5174",       # Vite dev server
+        "http://127.0.0.1:5174",
         "http://localhost:80",         # Nginx в продакшене
         "https://your-domain.com",     # Ваш домен
     ],

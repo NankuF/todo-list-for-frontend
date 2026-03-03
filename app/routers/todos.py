@@ -107,4 +107,3 @@ async def delete_todo(
 
     task.is_active = False
     await session.commit()
-    
